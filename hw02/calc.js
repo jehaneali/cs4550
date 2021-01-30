@@ -1,27 +1,27 @@
+/*
+Design Decisions:
+-  This calculator performs one calculation at a time.  After entering a 
+number, an operation, and another number, the "+/=" enter key must be pressed,
+after which a result will be displayed. The user can then enter their next 
+calculation on the following line. Pressing the clear button gets rid of all 
+operations and numbers in the current calculation, and starts a new calculation.
+
+*/
+
+
 (function () {
     "use strict";
-    
-    // I decided to have the +/= button act as = only after being pressed twice, 
-    // and act as + on a first press
-
-    // I also decided that the answer would not display until the = button is pressed, 
-    // as per the Mac calculator
-
-    // Additionally, it appears that 4 function calculators often do not support PEMDAS
-    // order of operations, so my calculator does not support that -- it simply 
-    // executes operations in the order they are typed in
-
 
     var plEqPressedLast = false;
     var currOp = null;
     var numOne = "";
     var numTwo = "";
     
-
     
     function evaluate() {
-        var first = parseInt(numOne);
-        var sec = parseInt(numTwo);
+        
+        var first = parseFloat(numOne);
+        var sec = parseFloat(numTwo);
         var total = 0;
         if (currOp === "add") {
             total = first + sec;
@@ -37,7 +37,11 @@
         }
         console.log(total);
         var x = document.getElementById("screen");
-        x.innerHTML = total;
+        x.innerHTML = total + "<br>";
+        currOp = null;
+        numOne = ""
+        numTwo = "";
+        
     }
 
     function pressPlusEquals() {
@@ -67,9 +71,11 @@
         x.innerHTML += "1";
         if (currOp === null) {
             numOne += "1";
+          
         }
         else {
             numTwo += "1";
+           
         }
     }
 
@@ -78,15 +84,17 @@
         x.innerHTML += "2";
         if (currOp === null) {
             numOne += "2";
+           
         }
         else {
             numTwo += "2";
+           
         }
     }
 
     function pressThree() {
         var x = document.getElementById("screen");
-        x.innerHTML += " " + 3 + " ";
+        x.innerHTML += "3";
         if (currOp === null) {
             numOne += "3";
         }
@@ -97,46 +105,50 @@
 
     function pressFour() {
         var x = document.getElementById("screen");
-        x.innerHTML += " " + 4 + " ";
+        x.innerHTML += "4";
         if (currOp === null) {
             numOne += "4";
         }
         else {
             numTwo += "4";
+            
         }
     }
 
     function pressFive() {
         var x = document.getElementById("screen");
-        x.innerHTML += " " + 5 + " ";
+        x.innerHTML += "5";
         if (currOp === null) {
             numOne += "5";
         }
         else {
             numTwo += "5";
+            
         }
     }
 
     function pressSix() {
         var x = document.getElementById("screen");
-        x.innerHTML += " " + 6 + " ";
+        x.innerHTML += "6";
         if (currOp === null) {
             numOne += "6";
         }
         else {
             numTwo += "6";
+            
         }
         
     }
 
     function pressSeven() {
         var x = document.getElementById("screen");
-        x.innerHTML += " " + 7 + " ";
+        x.innerHTML += "7";
         if (currOp === null) {
             numOne += "7";
         }
         else {
             numTwo += "7";
+            
         }
     }
 
@@ -148,25 +160,33 @@
         }
         else {
             numTwo += "8";
+           
         }
         
     }
 
     function pressNine() {
         var x = document.getElementById("screen");
-        x.innerHTML += " " + 9 + " ";
+        x.innerHTML += "9";
         if (currOp === null) {
             numOne += "9";
         }
         else {
             numTwo += "9";
+            
         }
     }
 
     function pressDec() {
         var x = document.getElementById("screen");
         x.innerHTML += ".";
-        //otherNum += ".";
+        if (currOp === null) {
+            numOne += ".";
+        }
+        else {
+            numTwo += ".";
+            
+        }
     }
 
     function pressMinus() {
@@ -207,7 +227,9 @@
     function pressClear() {
         var x = document.getElementById("screen");
         x.innerHTML = "";
-        //total = 0;
+        currOp = null;
+        numOne = "";
+        numTwo = "";
     }
     
     function init() {
@@ -247,44 +269,8 @@
         btnMult.addEventListener("click", pressMult);
         btnDivide.addEventListener("click", pressDivide);
         btnClear.addEventListener("click", pressClear);
-        //btnClear.addEventListener("click", (btnClear.innerHTML) => document.getElementById("screen").innerHTML += " " + num + " ");
-
+        
     }
 
     window.addEventListener("load", init, false);
 })();
-
-
-
-
-
-// var displayStr = "sup ";
-
-// (function () {
-//     "use strict";
-
-//     function update() {
-//         document.getElementById("plusEquals").addEventListener("click", changeScreen());
-        
-//         //document.getElementById("screen").innerHTML = "hi";
-//     }
-
-//     function changeScreen() {
-//         document.getElementById("screen").innerHTML = "hi";
-//     }
-    
-//    // document.getElementById("plusEquals").addEventListener("click", changeScreen());
-// })();
-
-// function changeScreen() {
-//     document.getElementById("screen").innerHTML = "hi";
-// }
-
-
-// (function () {
-//     "use strict";
-//     function changeScreen() {
-//         document.getElementById("screen").innerHTML = displayStr + "hellooo there";
-//     }
-    
-// })
