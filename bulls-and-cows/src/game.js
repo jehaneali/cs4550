@@ -21,12 +21,18 @@ export function word_view(secret, guesses) {
 export function bad_guesses(secret, guesses) {
     let digits = secret.split('');
     let bads = [];
+    let badResults = [];
+    let allBads = [];
     for (let gg of guesses) {
         if (!digits.includes(gg)) {
             bads.push(gg);
+            badResults.push("sup");
         }
     }
-    return uniq(bads);
+    allBads.push(bads);
+    allBads.push(badResults);
+    return uniq(allBads);
+    
 }
 
 export function lives_left(secret, guesses) {

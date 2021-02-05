@@ -13,7 +13,8 @@ function App() {
   const [guess, setGuess] = useState("");
 
   let view = word_view(secret, guesses);
-  let bads = bad_guesses(secret, guesses);
+  let bads = bad_guesses(secret, guesses)[0];
+  let badResults = bad_guesses(secret, guesses)[1];
   let lives = lives_left(secret, guesses);
 
 
@@ -57,8 +58,9 @@ function App() {
     <div className="App">
       <h1>Word: {view.join(' ')}</h1>
       <h1>Guesses: {guesses.join(' ')}</h1>
-      <h1>Bads: {bads.join(' ')}</h1>
-      <h1>Lives: {lives}</h1>
+      <h1>Incorrect Guesses: {bads.join(' ')}</h1>
+      <h1>Results of Incorrect Guesses: {badResults.join(' ')}</h1>
+      <h1>Guesses Left: {lives}</h1>
       
       <p>
         <input type="text" min="1023" max="9999" value={guess} onChange={updateGuess} onKeyPress={keypress}/>
