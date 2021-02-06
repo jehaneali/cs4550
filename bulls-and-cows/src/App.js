@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import { useState } from 'react';
-import { uniq, bad_guesses, word_view, lives_left } from './game';
+import { uniq, bad_guesses, word_view, lives_left, code_view } from './game';
 import './App.css';
 
 // Credit: Nat Tuck, CS4550 Lecture 04 Code
@@ -12,9 +12,9 @@ function App() {
   const [guesses, setGuesses] = useState([]);
   const [guess, setGuess] = useState("");
 
-  let view = word_view(secret, guesses);
-  let bads = bad_guesses(secret, guesses)[0];
-  let badResults = bad_guesses(secret, guesses)[1];
+  //let view = word_view(secret, guesses);
+  //let bads = bad_guesses(secret, guesses);
+  let code = code_view(secret, guesses);
   let lives = lives_left(secret, guesses);
 
 
@@ -56,10 +56,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Word: {view.join(' ')}</h1>
+      {/* <h1>Word: {view.join(' ')}</h1> */}
       <h1>Guesses: {guesses.join(' ')}</h1>
-      <h1>Incorrect Guesses: {bads.join(' ')}</h1>
-      <h1>Results of Incorrect Guesses: {badResults.join(' ')}</h1>
+      {/* <h1>Incorrect Guesses: {bads.join(' ')}</h1> */}
+      <h1>Results of Incorrect Guesses: {code.join(' ')}</h1>
       <h1>Guesses Left: {lives}</h1>
       
       <p>
