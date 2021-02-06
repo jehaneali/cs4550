@@ -1,6 +1,9 @@
 // Credit: Nat Tuck, CS4550 Lecture 04 Code
 // https://github.com/NatTuck/scratch-2021-01.git
 
+// credit: https://zetcode.com/javascript/lodash/ 
+const _ = require("lodash");
+
 export function uniq(xs) {
     return Array.from(new Set(xs));
 }
@@ -38,7 +41,7 @@ export function code_view(secret, guesses) {
     }
     code.push(""+aCount + "A"+bCount+"B ");
     console.log("uniq is " + uniq(code));
-    return uniq(code);
+    return Array.from(code);
 }
 
 export function word_view(secret, guesses) {
@@ -101,4 +104,8 @@ export function word_view(secret, guesses) {
 
 export function lives_left(secret, guesses) {
     return 8 - guesses.length;
+}
+
+export function genRand() {
+    return "" + _.random(1234, 9876);
 }

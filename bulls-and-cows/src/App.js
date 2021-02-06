@@ -1,14 +1,29 @@
 // import logo from './logo.svg';
+import "milligram";
 import { useState } from 'react';
-import { uniq, bad_guesses, word_view, lives_left, code_view } from './game';
+import { uniq, bad_guesses, word_view, lives_left, code_view, genRand } from './game';
 import './App.css';
 
 // Credit: Nat Tuck, CS4550 Lecture 04 Code
 // https://github.com/NatTuck/scratch-2021-01.git
 function App() {
   //TODO: randomize the number 
-  //TODO: enforce 4 digit unique value etc 
-  const [secret, setNumber] = useState("1234");
+  //TODO: enforce 4 digit unique value etc
+  // let rand = _.random(1234, 9876);
+
+  // while(!checkUnique(rand)) {
+  //   rand = _.random(1234, 9876);
+  // }
+
+  // function checkUnique(num) {
+  //   let spl = (""+num).split('');
+  //   let set = new Set(spl);
+  //   return spl.length == set.size;
+  // }
+  
+  const y = genRand();
+  const [secret, setNumber] = useState(y);
+  console.log("rand is" + y);
   const [guesses, setGuesses] = useState([]);
   const [guess, setGuess] = useState("");
 
@@ -31,8 +46,16 @@ function App() {
   }
 
   function makeGuess() {
-    setGuesses(guesses.concat(guess));
-    setGuess("");
+    let spl = (""+guess).split('');
+    let set = new Set(spl);
+    if(!(spl.length == set.size && spl.length == 4)) {
+      setGuess("");
+    }
+    else {
+      setGuesses(guesses.concat(guess));
+      setGuess("");
+    }
+    
   }
 
   function keypress(ev) {
@@ -54,16 +77,47 @@ function App() {
     );
   }
 
+  console.log("Code is " + code)
+  console.log(code === " 4A0B");
+  let cc = code[0]; //maybe use lives
+  console.log("cc is" + cc); 
+  if (cc.substring(0,1) == "4") {
+    return (
+      <div className="App">
+        <h1>You win!</h1>
+        <p>
+          <button onClick={() => setGuesses([])}>
+            Reset
+          </button>
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
+      <h1>All guesses must be 4 unique digits.</h1>
+      <div class="container">
+      
       {/* <h1>Word: {view.join(' ')}</h1> */}
-      <h1>Guesses: {guesses.join(' ')}</h1>
+      <div class = "row">
+        <div class="column"><h1>Guesses: </h1></div>
+        <div class="column"><h1>Results of Incorrect Guesses: </h1> </div>
+      </div>
+      <div class = "row">
+        <div class="column"><h2>{guesses.join(' ')}</h2></div>
+        <div class="column"><h2>{code.join(' ')}</h2></div>
+
+      </div>
+      {/* <h1>Guesses: </h1> */}
+      
       {/* <h1>Incorrect Guesses: {bads.join(' ')}</h1> */}
-      <h1>Results of Incorrect Guesses: {code.join(' ')}</h1>
-      <h1>Guesses Left: {lives}</h1>
+      
+      {/* <h2>{code.join(' ')}</h2>
+      <h1>Guesses Left: {lives}</h1> */}
       
       <p>
-        <input type="text" min="1023" max="9999" value={guess} onChange={updateGuess} onKeyPress={keypress}/>
+        <input type="number" min="0123" max="9876" value={guess} onChange={updateGuess} onKeyPress={keypress}/>
         <button onClick={makeGuess}>
           Guess
         </button>
@@ -73,6 +127,7 @@ function App() {
           Reset
         </button>
       </p>
+      </div>
     </div>
   );
 
