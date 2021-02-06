@@ -1,0 +1,30 @@
+Please fill in answers to the questions below:
+
+
+1. What's your name?
+Jehane Ali
+
+
+2. What hostname did you deploy to?
+hw03.jehaneali.site
+
+
+3. Which parts of this assignment did you have trouble with, if any?
+I had some trouble with deployment. 
+
+
+4. What external libraries did you use? For what?
+I realize now that I imported lodash but ended up not using it, and I also 
+used milligram for styling my page. 
+
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Task 1
+ - Task 2
+ - Task 3
+ - Task 4
+ - Task 5
+ - Task 6
+ - Task 7
+ - Task 8
