@@ -2,6 +2,9 @@
 // https://github.com/NatTuck/scratch-2021-01.git
 
 // credit: https://zetcode.com/javascript/lodash/ 
+
+import codesList from './App.js';
+
 const _ = require("lodash");
 
 export function uniq(xs) {
@@ -107,5 +110,23 @@ export function lives_left(secret, guesses) {
 }
 
 export function genRand() {
-    return "" + _.random(1234, 9876);
+    let numSet = [0,1,2,3,4,5,6,7,8,9];
+
+    let a = numSet[Math.floor(Math.random()*10)];
+    numSet.splice(numSet.indexOf(a),1);
+
+    let b = numSet[Math.floor(Math.random()*9)];
+    numSet.splice(numSet.indexOf(b),1);
+
+    let c = numSet[Math.floor(Math.random()*8)];
+    numSet.splice(numSet.indexOf(c),1);
+
+    let d = numSet[Math.floor(Math.random()*7)];
+    numSet.splice(numSet.indexOf(d),1);
+
+    let e = a*1000+b*100+c*10+d;
+    console.log("i just generated "+e)
+
+    return ""+ e;
+    //return "" + _.random(1234, 9876);
 }

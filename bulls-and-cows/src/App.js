@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { uniq, bad_guesses, word_view, lives_left, code_view, genRand } from './game';
 import './App.css';
 
+let codesList = [];
+
 // Credit: Nat Tuck, CS4550 Lecture 04 Code
 // https://github.com/NatTuck/scratch-2021-01.git
 function App() {
@@ -26,6 +28,7 @@ function App() {
   console.log("rand is" + y);
   const [guesses, setGuesses] = useState([]);
   const [guess, setGuess] = useState("");
+  //const [codes, setCodes] = useState([]);
 
   //let view = word_view(secret, guesses);
   //let bads = bad_guesses(secret, guesses);
@@ -93,10 +96,11 @@ function App() {
       </div>
     );
   }
-
+  console.log("ok code is " + code);
   return (
     <div className="App">
-      <h1>All guesses must be 4 unique digits.</h1>
+      <h2>All guesses must be 4 unique digits.</h2>
+      <h3>Lives left: {lives}</h3>
       <div class="container">
       
       {/* <h1>Word: {view.join(' ')}</h1> */}
@@ -106,6 +110,7 @@ function App() {
       </div>
       <div class = "row">
         <div class="column"><h2>{guesses.join(' ')}</h2></div>
+        
         <div class="column"><h2>{code.join(' ')}</h2></div>
 
       </div>
