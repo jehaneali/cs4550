@@ -1,7 +1,8 @@
 // We need to import the CSS so that webpack will load it.
 // The MiniCssExtractPlugin is used to separate it out into
 // its own CSS file.
-import "../css/app.scss"
+import "milligram";
+import "../css/app.scss";
 
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
@@ -12,4 +13,30 @@ import "../css/app.scss"
 //     import {Socket} from "phoenix"
 //     import socket from "./socket"
 //
-import "phoenix_html"
+import "phoenix_html";
+
+//import React, { useState } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import Bulls from './Bulls';
+
+// function Demo(_) {
+//     const [count, setCount] = useState(0);
+
+//     return (
+//         <div>
+//           <p>Count: {count}</p>
+//           <p><button onClick={() => setCount(count + 1)}>+1</button></p>
+//           {/* <p>this is a test</p>
+//           <h1>hey please show up</h1> */}
+//         </div>
+//     )
+// }
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Bulls />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
