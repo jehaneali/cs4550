@@ -11,7 +11,7 @@
 
 export SECRET_KEY_BASE=jYlyjZqfiUOX6GSxreUOqZ7KU+nWTjivhbBK2/up0Ie3RVHaAvODCdRQniKng42Z
 export MIX_ENV=prod
-export PORT=4790
+export PORT=4791
 
 echo "Stopping old copy of app, if any..."
 
