@@ -4,8 +4,6 @@ import { lives_left, code_view, genRand } from './game';
 import { ch_join, ch_push, ch_reset } from './socket';
 //import './App.css';
 
-
-
 /*
 Design Decisions: 
 - As an added challenge to the user, I opted to only have the results of the
@@ -22,16 +20,16 @@ function Bulls() {
   const y = genRand();
   //credit for the following 5 lines: Nat Tuck's CS4550 Lecture 04 Code
   // https://github.com/NatTuck/scratch-2021-01.git
-  //const [secret, setNumber] = useState(y);
-  //const [guesses, setGuesses] = useState([]);
-  //const [guess, setGuess] = useState("");
+  const [secret, setNumber] = useState(y);
+  const [guesses, setGuesses] = useState([]);
+  const [guess, setGuess] = useState("");
 
-  const [state, setState] = useState({
-      secret: y,
-      guesses: [],
-  });
+//   const [state, setState] = useState({
+//       secret: y,
+//       guesses: [],
+//   });
 
-  let {secret, guesses} = state;
+//   let {secret, guesses} = state;
 
   let code = code_view(secret, guesses);
   let lives = lives_left(secret, guesses);
