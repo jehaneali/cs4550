@@ -1,4 +1,4 @@
-export SECRET_KEY_BASE=nLIjBJtE47XJvhe8nlhCUcN08Og6ia1MUZ7eOUy9PuoF7RArq0n/MDtzf+V7z0n4
+export SECRET_KEY_BASE=jYlyjZqfiUOX6GSxreUOqZ7KU+nWTjivhbBK2/up0Ie3RVHaAvODCdRQniKng42Z
 export MIX_ENV=prod
 export PORT=4795
 export NODEBIN=`pwd`/assets/node_modules/.bin
